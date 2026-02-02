@@ -2,7 +2,7 @@
 //  StatsCardView.swift
 //  SalonSparkAI
 //
-//  Stats card component for displaying key metrics
+//  Stats card component with gradient and trend indicators
 //
 
 import SwiftUI
@@ -10,82 +10,156 @@ import SwiftUI
 struct StatsCardView: View {
     let title: String
     let value: String
-    let subtitle: String
+    let subtitle: String?
     let icon: String
-    var trend: Int? = nil
-    var isPositive: Bool = true
-    var isPrimary: Bool = false
+    var trend: (value: Int, isPositive: Bool)?
+    var variant: CardVariant = .default
+    
+    enum CardVariant {
+        case `default`
+        case primary
+        case accent
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Image(systemName: icon)
-                    .font(.title3)
-                    .foregroundColor(isPrimary ? .white : .blue)
+                // Icon
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(iconBackground)
+                        .frame(width: 48, height: 48)
+                    
+                    Image(systemName: icon)
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(iconColor)
+                }
                 
                 Spacer()
                 
+                // Trend indicator
                 if let trend = trend {
                     HStack(spacing: 4) {
-                        Image(systemName: isPositive ? "arrow.up" : "arrow.down")
-                            .font(.caption)
-                        Text("\(trend)%")
-                            .font(.caption)
-                            .fontWeight(.medium)
+                        Image(systemName: trend.isPositive ? "arrow.up" : "arrow.down")
+                            .font(.system(size: 10, weight: .bold))
+                        Text("\(trend.value)%")
+                            .font(.system(size: 12, weight: .semibold))
                     }
-                    .foregroundColor(isPositive ? .green : .red)
+                    .foregroundColor(trend.isPositive ? .green : .red)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(
+                        Capsule()
+                            .fill(trend.isPositive ? Color.green.opacity(0.1) : Color.red.opacity(0.1))
+                    )
                 }
             }
             
-            Text(value)
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(isPrimary ? .white : .primary)
+            Spacer()
             
+            // Title
             Text(title)
-                .font(.caption)
-                .foregroundColor(isPrimary ? .white.opacity(0.9) : .secondary)
+                .font(.system(size: 13, weight: .medium))
+                .foregroundColor(textSecondaryColor)
             
-            Text(subtitle)
-                .font(.caption2)
-                .foregroundColor(isPrimary ? .white.opacity(0.7) : .secondary)
+            // Value
+            Text(value)
+                .font(.system(size: 28, weight: .bold, design: .rounded))
+                .foregroundColor(textPrimaryColor)
+            
+            // Subtitle
+            if let subtitle = subtitle {
+                Text(subtitle)
+                    .font(.system(size: 11))
+                    .foregroundColor(textSecondaryColor)
+            }
         }
-        .padding()
+        .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(isPrimary ? LinearGradient(
-                    colors: [Color.blue, Color.blue.opacity(0.8)],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                ) : LinearGradient(
-                    colors: [Color(UIColor.systemBackground)],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                ))
-                .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
-        )
+        .frame(height: 140)
+        .background(cardBackground)
+        .cornerRadius(16)
+        .shadow(color: Color.cardShadow, radius: 8, x: 0, y: 2)
+    }
+    
+    // MARK: - Computed Properties
+    private var cardBackground: some View {
+        Group {
+            switch variant {
+            case .default:
+                Color.cardBackground
+            case .primary:
+                LinearGradient.roseGradient
+            case .accent:
+                Color.purple.opacity(0.1)
+            }
+        }
+    }
+    
+    private var iconBackground: Color {
+        switch variant {
+        case .default, .accent:
+            return Color.blue.opacity(0.1)
+        case .primary:
+            return Color.white.opacity(0.2)
+        }
+    }
+    
+    private var iconColor: Color {
+        switch variant {
+        case .default, .accent:
+            return .blue
+        case .primary:
+            return .white
+        }
+    }
+    
+    private var textPrimaryColor: Color {
+        variant == .primary ? .white : .primary
+    }
+    
+    private var textSecondaryColor: Color {
+        variant == .primary ? .white.opacity(0.8) : .secondary
     }
 }
 
 #Preview {
-    VStack {
-        StatsCardView(
-            title: "Today's Bookings",
-            value: "8",
-            subtitle: "3 remaining",
-            icon: "calendar",
-            trend: 12,
-            isPositive: true
-        )
+    VStack(spacing: 16) {
+        HStack(spacing: 12) {
+            StatsCardView(
+                title: "Today's Bookings",
+                value: "8",
+                subtitle: "3 remaining",
+                icon: "calendar",
+                trend: (value: 12, isPositive: true)
+            )
+            
+            StatsCardView(
+                title: "Revenue",
+                value: "$485",
+                subtitle: "Today's total",
+                icon: "dollarsign.circle.fill",
+                variant: .primary
+            )
+        }
         
-        StatsCardView(
-            title: "Revenue",
-            value: "$485",
-            subtitle: "Today's total",
-            icon: "dollarsign.circle.fill",
-            isPrimary: true
-        )
+        HStack(spacing: 12) {
+            StatsCardView(
+                title: "New Clients",
+                value: "12",
+                subtitle: "This week",
+                icon: "person.2.fill",
+                trend: (value: 8, isPositive: true)
+            )
+            
+            StatsCardView(
+                title: "Fill Rate",
+                value: "76%",
+                subtitle: "This month",
+                icon: "chart.bar.fill"
+            )
+        }
     }
     .padding()
 }
+

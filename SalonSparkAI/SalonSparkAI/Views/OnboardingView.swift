@@ -2,102 +2,170 @@
 //  OnboardingView.swift
 //  SalonSparkAI
 //
-//  Onboarding flow for new users
+//  Onboarding flow with animations and feature showcase
 //
 
 import SwiftUI
 
 struct OnboardingView: View {
     let onComplete: () -> Void
-    @State private var currentPage = 0
+    @State private var currentStep = 0
     
-    let pages = [
-        OnboardingPage(
+    let features = [
+        OnboardingFeature(
             icon: "sparkles",
-            title: "AI-Powered Insights",
-            description: "Get smart recommendations to fill your schedule and grow your business"
+            title: "AI-Powered Promotions",
+            description: "Let AI create stunning social posts and targeted campaigns to fill your empty slots.",
+            gradient: [Color.pink, Color.orange]
         ),
-        OnboardingPage(
-            icon: "calendar.badge.clock",
+        OnboardingFeature(
+            icon: "calendar",
             title: "Smart Scheduling",
-            description: "Optimize your time with intelligent appointment management"
+            description: "Automatically optimize your calendar and reduce no-shows with intelligent reminders.",
+            gradient: [Color.blue, Color.cyan]
         ),
-        OnboardingPage(
+        OnboardingFeature(
+            icon: "person.2.fill",
+            title: "Client Growth",
+            description: "Build lasting relationships with personalized offers and loyalty programs.",
+            gradient: [Color.purple, Color.pink]
+        ),
+        OnboardingFeature(
             icon: "chart.line.uptrend.xyaxis",
-            title: "Boost Revenue",
-            description: "Maximize earnings with AI-driven pricing and promotion strategies"
+            title: "Business Insights",
+            description: "Track performance and get actionable recommendations to grow your salon.",
+            gradient: [Color.green, Color.mint]
         )
     ]
     
     var body: some View {
-        VStack(spacing: 40) {
-            Spacer()
+        ZStack {
+            // Warm gradient background
+            LinearGradient(
+                colors: [
+                    Color.orange.opacity(0.1),
+                    Color.pink.opacity(0.1),
+                    Color.purple.opacity(0.05)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
             
-            TabView(selection: $currentPage) {
-                ForEach(0..<pages.count, id: \.self) { index in
-                    VStack(spacing: 24) {
-                        Image(systemName: pages[index].icon)
-                            .font(.system(size: 80))
-                            .foregroundStyle(
+            VStack(spacing: 0) {
+                // Skip button
+                HStack {
+                    Spacer()
+                    Button(action: onComplete) {
+                        Text("Skip")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding()
+                }
+                
+                Spacer()
+                
+                // Feature content
+                VStack(spacing: 32) {
+                    // Animated icon
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 24)
+                            .fill(
                                 LinearGradient(
-                                    colors: [.blue, .purple],
+                                    colors: features[currentStep].gradient,
                                     startPoint: .topLeading,
                                     endPoint: .bottomTrailing
                                 )
                             )
+                            .frame(width: 96, height: 96)
+                            .shadow(color: features[currentStep].gradient[0].opacity(0.3), radius: 20, x: 0, y: 10)
                         
-                        Text(pages[index].title)
-                            .font(.title)
-                            .fontWeight(.bold)
+                        Image(systemName: features[currentStep].icon)
+                            .font(.system(size: 48))
+                            .foregroundColor(.white)
+                    }
+                    .floatingAnimation()
+                    
+                    // Title and description
+                    VStack(spacing: 16) {
+                        Text(features[currentStep].title)
+                            .font(.system(size: 28, weight: .bold, design: .rounded))
                             .multilineTextAlignment(.center)
+                            .transition(.opacity.combined(with: .move(edge: .bottom)))
                         
-                        Text(pages[index].description)
-                            .font(.body)
+                        Text(features[currentStep].description)
+                            .font(.system(size: 17))
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
-                            .padding(.horizontal, 40)
+                            .padding(.horizontal, 32)
+                            .transition(.opacity.combined(with: .move(edge: .bottom)))
                     }
-                    .tag(index)
                 }
-            }
-            .tabViewStyle(.page(indexDisplayMode: .always))
-            .frame(height: 400)
-            
-            Spacer()
-            
-            Button(action: {
-                if currentPage < pages.count - 1 {
-                    withAnimation {
-                        currentPage += 1
+                .animation(.spring(response: 0.6, dampingFraction: 0.8), value: currentStep)
+                
+                Spacer()
+                
+                // Progress and CTA
+                VStack(spacing: 24) {
+                    // Progress dots
+                    HStack(spacing: 8) {
+                        ForEach(0..<features.count, id: \.self) { index in
+                            Button(action: {
+                                withAnimation(.spring(response: 0.3)) {
+                                    currentStep = index
+                                }
+                            }) {
+                                Capsule()
+                                    .fill(index == currentStep ? Color.blue : Color.gray.opacity(0.3))
+                                    .frame(width: index == currentStep ? 32 : 8, height: 8)
+                            }
+                        }
                     }
-                } else {
-                    onComplete()
-                }
-            }) {
-                Text(currentPage < pages.count - 1 ? "Next" : "Get Started")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(
-                        LinearGradient(
-                            colors: [.blue, .purple],
-                            startPoint: .leading,
-                            endPoint: .trailing
+                    
+                    // CTA Button
+                    Button(action: handleNext) {
+                        HStack(spacing: 8) {
+                            Text(currentStep < features.count - 1 ? "Continue" : "Get Started")
+                                .font(.headline)
+                            Image(systemName: "arrow.right")
+                                .font(.system(size: 14, weight: .semibold))
+                        }
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(
+                            LinearGradient(
+                                colors: [Color.pink, Color.orange],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
                         )
-                    )
-                    .cornerRadius(12)
+                        .cornerRadius(16)
+                    }
+                    .padding(.horizontal, 24)
+                }
+                .padding(.bottom, 40)
             }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 40)
+        }
+    }
+    
+    private func handleNext() {
+        if currentStep < features.count - 1 {
+            withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                currentStep += 1
+            }
+        } else {
+            onComplete()
         }
     }
 }
 
-struct OnboardingPage {
+struct OnboardingFeature {
     let icon: String
     let title: String
     let description: String
+    let gradient: [Color]
 }
 
 #Preview {

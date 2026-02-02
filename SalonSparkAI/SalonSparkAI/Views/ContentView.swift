@@ -2,21 +2,25 @@
 //  ContentView.swift
 //  SalonSparkAI
 //
-//  Main content view that handles navigation between onboarding and dashboard
+//  Main content view handling navigation between onboarding and dashboard
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showOnboarding = true
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     
     var body: some View {
-        if showOnboarding {
-            OnboardingView(onComplete: {
-                showOnboarding = false
-            })
-        } else {
-            DashboardView()
+        Group {
+            if hasCompletedOnboarding {
+                DashboardView()
+            } else {
+                OnboardingView(onComplete: {
+                    withAnimation {
+                        hasCompletedOnboarding = true
+                    }
+                })
+            }
         }
     }
 }

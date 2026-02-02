@@ -2,27 +2,46 @@
 //  AIInsight.swift
 //  SalonSparkAI
 //
-//  Model for AI-generated insights
+//  AI-generated insight model
 //
 
 import Foundation
 
-enum InsightType: String {
+enum InsightType: String, Codable {
     case promotion
     case content
     case timing
+    case offer
+    
+    var iconName: String {
+        switch self {
+        case .promotion: return "megaphone.fill"
+        case .content: return "message.fill"
+        case .timing: return "chart.line.uptrend.xyaxis"
+        case .offer: return "sparkles"
+        }
+    }
 }
 
-struct AIInsight: Identifiable {
+struct AIInsight: Identifiable, Codable {
     let id: String
     let type: InsightType
     let title: String
     let description: String
     let action: String
     let impact: String
+    
+    init(id: String, type: InsightType, title: String, description: String, action: String, impact: String) {
+        self.id = id
+        self.type = type
+        self.title = title
+        self.description = description
+        self.action = action
+        self.impact = impact
+    }
 }
 
-// Mock data
+// MARK: - Mock Data
 extension AIInsight {
     static let mockInsights = [
         AIInsight(
@@ -48,6 +67,14 @@ extension AIInsight {
             description: "Your audience is most active at 7PM today. Schedule your post then.",
             action: "Schedule",
             impact: "+35% engagement"
+        ),
+        AIInsight(
+            id: "4",
+            type: .offer,
+            title: "Loyalty Reward",
+            description: "5 clients are close to their 5th visit. Send them a special offer to encourage rebooking.",
+            action: "Send Offer",
+            impact: "+3 bookings"
         )
     ]
 }
