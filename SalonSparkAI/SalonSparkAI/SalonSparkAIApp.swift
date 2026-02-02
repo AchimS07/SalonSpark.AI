@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct SalonSparkAIApp: App {
+    @StateObject private var appState = AppState()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .preferredColorScheme(.light) // Can be changed to support dark mode
+                .environmentObject(appState)
         }
     }
 }

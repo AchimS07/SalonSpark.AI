@@ -7,54 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A1E3F012C00000000000001 /* SalonSparkAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F002C00000000000001 /* SalonSparkAIApp.swift */; };
-		3A1E3F032C00000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F022C00000000000002 /* ContentView.swift */; };
-		3A1E3F052C00000000000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1E3F042C00000000000003 /* Assets.xcassets */; };
-		3A1E3F082C00000000000004 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1E3F072C00000000000004 /* Preview Assets.xcassets */; };
-		3A1E3F0F2C00000000000005 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F0E2C00000000000005 /* OnboardingView.swift */; };
-		3A1E3F112C00000000000006 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F102C00000000000006 /* DashboardView.swift */; };
-		3A1E3F132C00000000000007 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F122C00000000000007 /* Appointment.swift */; };
-		3A1E3F152C00000000000008 /* EmptySlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F142C00000000000008 /* EmptySlot.swift */; };
-		3A1E3F172C00000000000009 /* AIInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F162C00000000000009 /* AIInsight.swift */; };
-		3A1E3F192C00000000000010 /* StatsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F182C00000000000010 /* StatsCardView.swift */; };
-		3A1E3F1B2C00000000000011 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F1A2C00000000000011 /* HeaderView.swift */; };
-		3A1E3F1D2C00000000000012 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F1C2C00000000000012 /* DashboardViewModel.swift */; };
-		3A1E3F1F2C00000000000013 /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F1E2C00000000000013 /* QuickAction.swift */; };
-		3A1E3F212C00000000000014 /* QuickActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F202C00000000000014 /* QuickActionsView.swift */; };
-		3A1E3F232C00000000000015 /* EmptySlotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F222C00000000000015 /* EmptySlotsView.swift */; };
-		3A1E3F252C00000000000016 /* AIInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F242C00000000000016 /* AIInsightsView.swift */; };
-		3A1E3F272C00000000000017 /* UpcomingAppointmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F262C00000000000017 /* UpcomingAppointmentsView.swift */; };
-		3A1E3F292C00000000000018 /* MobileNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F282C00000000000018 /* MobileNavView.swift */; };
-		3A1E3F2B2C00000000000019 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F2A2C00000000000019 /* ColorExtensions.swift */; };
-		3A1E3F2D2C00000000000020 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E3F2C2C00000000000020 /* ViewExtensions.swift */; };
+		4A1E3F012C00000000000001 /* SalonSparkAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F002C00000000000001 /* SalonSparkAIApp.swift */; };
+		4A1E3F032C00000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F022C00000000000002 /* ContentView.swift */; };
+		4A1E3F052C00000000000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A1E3F042C00000000000003 /* Assets.xcassets */; };
+		4A1E3F082C00000000000004 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A1E3F072C00000000000004 /* Preview Assets.xcassets */; };
+		4A1E3F0F2C00000000000005 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F0E2C00000000000005 /* OnboardingView.swift */; };
+		4A1E3F112C00000000000006 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F102C00000000000006 /* DashboardView.swift */; };
+		4A1E3F132C00000000000007 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F122C00000000000007 /* CalendarView.swift */; };
+		4A1E3F152C00000000000008 /* AIBoostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F142C00000000000008 /* AIBoostView.swift */; };
+		4A1E3F172C00000000000009 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F162C00000000000009 /* ClientsView.swift */; };
+		4A1E3F192C00000000000010 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F182C00000000000010 /* SettingsView.swift */; };
+		4A1E3F1B2C00000000000011 /* BookingFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F1A2C00000000000011 /* BookingFormView.swift */; };
+		4A1E3F1D2C00000000000012 /* AIPostGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F1C2C00000000000012 /* AIPostGeneratorView.swift */; };
+		4A1E3F1F2C00000000000013 /* CampaignCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F1E2C00000000000013 /* CampaignCreatorView.swift */; };
+		4A1E3F212C00000000000014 /* OfferCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F202C00000000000014 /* OfferCreatorView.swift */; };
+		4A1E3F232C00000000000015 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F222C00000000000015 /* Appointment.swift */; };
+		4A1E3F252C00000000000016 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F242C00000000000016 /* Client.swift */; };
+		4A1E3F272C00000000000017 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F262C00000000000017 /* Service.swift */; };
+		4A1E3F292C00000000000018 /* Campaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F282C00000000000018 /* Campaign.swift */; };
+		4A1E3F2B2C00000000000019 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F2A2C00000000000019 /* AppState.swift */; };
+		4A1E3F2D2C00000000000020 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F2C2C00000000000020 /* CalendarViewModel.swift */; };
+		4A1E3F2F2C00000000000021 /* ClientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F2E2C00000000000021 /* ClientsViewModel.swift */; };
+		4A1E3F312C00000000000022 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F302C00000000000022 /* AIService.swift */; };
+		4A1E3F332C00000000000023 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F322C00000000000023 /* DataManager.swift */; };
+		4A1E3F352C00000000000024 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E3F342C00000000000024 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A1E3EFD2C00000000000000 /* SalonSparkAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SalonSparkAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A1E3F002C00000000000001 /* SalonSparkAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonSparkAIApp.swift; sourceTree = "<group>"; };
-		3A1E3F022C00000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		3A1E3F042C00000000000003 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3A1E3F072C00000000000004 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3A1E3F0E2C00000000000005 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		3A1E3F102C00000000000006 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		3A1E3F122C00000000000007 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
-		3A1E3F142C00000000000008 /* EmptySlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySlot.swift; sourceTree = "<group>"; };
-		3A1E3F162C00000000000009 /* AIInsight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIInsight.swift; sourceTree = "<group>"; };
-		3A1E3F182C00000000000010 /* StatsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardView.swift; sourceTree = "<group>"; };
-		3A1E3F1A2C00000000000011 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		3A1E3F1C2C00000000000012 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
-		3A1E3F1E2C00000000000013 /* QuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
-		3A1E3F202C00000000000014 /* QuickActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionsView.swift; sourceTree = "<group>"; };
-		3A1E3F222C00000000000015 /* EmptySlotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySlotsView.swift; sourceTree = "<group>"; };
-		3A1E3F242C00000000000016 /* AIInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIInsightsView.swift; sourceTree = "<group>"; };
-		3A1E3F262C00000000000017 /* UpcomingAppointmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingAppointmentsView.swift; sourceTree = "<group>"; };
-		3A1E3F282C00000000000018 /* MobileNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNavView.swift; sourceTree = "<group>"; };
-		3A1E3F2A2C00000000000019 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
-		3A1E3F2C2C00000000000020 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		4A1E3EFD2C00000000000000 /* SalonSparkAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SalonSparkAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A1E3F002C00000000000001 /* SalonSparkAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonSparkAIApp.swift; sourceTree = "<group>"; };
+		4A1E3F022C00000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4A1E3F042C00000000000003 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A1E3F072C00000000000004 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4A1E3F0E2C00000000000005 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		4A1E3F102C00000000000006 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		4A1E3F122C00000000000007 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		4A1E3F142C00000000000008 /* AIBoostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBoostView.swift; sourceTree = "<group>"; };
+		4A1E3F162C00000000000009 /* ClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsView.swift; sourceTree = "<group>"; };
+		4A1E3F182C00000000000010 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4A1E3F1A2C00000000000011 /* BookingFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFormView.swift; sourceTree = "<group>"; };
+		4A1E3F1C2C00000000000012 /* AIPostGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIPostGeneratorView.swift; sourceTree = "<group>"; };
+		4A1E3F1E2C00000000000013 /* CampaignCreatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignCreatorView.swift; sourceTree = "<group>"; };
+		4A1E3F202C00000000000014 /* OfferCreatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCreatorView.swift; sourceTree = "<group>"; };
+		4A1E3F222C00000000000015 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
+		4A1E3F242C00000000000016 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		4A1E3F262C00000000000017 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		4A1E3F282C00000000000018 /* Campaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campaign.swift; sourceTree = "<group>"; };
+		4A1E3F2A2C00000000000019 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		4A1E3F2C2C00000000000020 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		4A1E3F2E2C00000000000021 /* ClientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewModel.swift; sourceTree = "<group>"; };
+		4A1E3F302C00000000000022 /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
+		4A1E3F322C00000000000023 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		4A1E3F342C00000000000024 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3A1E3EFA2C00000000000021 /* Frameworks */ = {
+		4A1E3EFA2C00000000000025 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -64,93 +72,97 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3A1E3EF42C00000000000022 = {
+		4A1E3EF42C00000000000026 = {
 			isa = PBXGroup;
 			children = (
-				3A1E3EFF2C00000000000023 /* SalonSparkAI */,
-				3A1E3EFE2C00000000000024 /* Products */,
+				4A1E3EFF2C00000000000027 /* SalonSparkAI */,
+				4A1E3EFE2C00000000000028 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		3A1E3EFE2C00000000000024 /* Products */ = {
+		4A1E3EFE2C00000000000028 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A1E3EFD2C00000000000000 /* SalonSparkAI.app */,
+				4A1E3EFD2C00000000000000 /* SalonSparkAI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3A1E3EFF2C00000000000023 /* SalonSparkAI */ = {
+		4A1E3EFF2C00000000000027 /* SalonSparkAI */ = {
 			isa = PBXGroup;
 			children = (
-				3A1E3F002C00000000000001 /* SalonSparkAIApp.swift */,
-				3A1E3F2E2C00000000000025 /* Views */,
-				3A1E3F2F2C00000000000026 /* ViewModels */,
-				3A1E3F302C00000000000027 /* Models */,
-				3A1E3F312C00000000000028 /* Components */,
-				3A1E3F322C00000000000029 /* Utilities */,
-				3A1E3F042C00000000000003 /* Assets.xcassets */,
-				3A1E3F062C00000000000030 /* Preview Content */,
+				4A1E3F002C00000000000001 /* SalonSparkAIApp.swift */,
+				4A1E3F362C00000000000029 /* Views */,
+				4A1E3F372C00000000000030 /* ViewModels */,
+				4A1E3F382C00000000000031 /* Models */,
+				4A1E3F392C00000000000032 /* Services */,
+				4A1E3F3A2C00000000000033 /* Utilities */,
+				4A1E3F042C00000000000003 /* Assets.xcassets */,
+				4A1E3F062C00000000000034 /* Preview Content */,
 			);
 			path = SalonSparkAI;
 			sourceTree = "<group>";
 		};
-		3A1E3F062C00000000000030 /* Preview Content */ = {
+		4A1E3F062C00000000000034 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				3A1E3F072C00000000000004 /* Preview Assets.xcassets */,
+				4A1E3F072C00000000000004 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		3A1E3F2E2C00000000000025 /* Views */ = {
+		4A1E3F362C00000000000029 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3A1E3F022C00000000000002 /* ContentView.swift */,
-				3A1E3F0E2C00000000000005 /* OnboardingView.swift */,
-				3A1E3F102C00000000000006 /* DashboardView.swift */,
+				4A1E3F022C00000000000002 /* ContentView.swift */,
+				4A1E3F0E2C00000000000005 /* OnboardingView.swift */,
+				4A1E3F102C00000000000006 /* DashboardView.swift */,
+				4A1E3F122C00000000000007 /* CalendarView.swift */,
+				4A1E3F142C00000000000008 /* AIBoostView.swift */,
+				4A1E3F162C00000000000009 /* ClientsView.swift */,
+				4A1E3F182C00000000000010 /* SettingsView.swift */,
+				4A1E3F1A2C00000000000011 /* BookingFormView.swift */,
+				4A1E3F1C2C00000000000012 /* AIPostGeneratorView.swift */,
+				4A1E3F1E2C00000000000013 /* CampaignCreatorView.swift */,
+				4A1E3F202C00000000000014 /* OfferCreatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3A1E3F2F2C00000000000026 /* ViewModels */ = {
+		4A1E3F372C00000000000030 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				3A1E3F1C2C00000000000012 /* DashboardViewModel.swift */,
+				4A1E3F2A2C00000000000019 /* AppState.swift */,
+				4A1E3F2C2C00000000000020 /* CalendarViewModel.swift */,
+				4A1E3F2E2C00000000000021 /* ClientsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		3A1E3F302C00000000000027 /* Models */ = {
+		4A1E3F382C00000000000031 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3A1E3F122C00000000000007 /* Appointment.swift */,
-				3A1E3F142C00000000000008 /* EmptySlot.swift */,
-				3A1E3F162C00000000000009 /* AIInsight.swift */,
-				3A1E3F1E2C00000000000013 /* QuickAction.swift */,
+				4A1E3F222C00000000000015 /* Appointment.swift */,
+				4A1E3F242C00000000000016 /* Client.swift */,
+				4A1E3F262C00000000000017 /* Service.swift */,
+				4A1E3F282C00000000000018 /* Campaign.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		3A1E3F312C00000000000028 /* Components */ = {
+		4A1E3F392C00000000000032 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				3A1E3F182C00000000000010 /* StatsCardView.swift */,
-				3A1E3F1A2C00000000000011 /* HeaderView.swift */,
-				3A1E3F202C00000000000014 /* QuickActionsView.swift */,
-				3A1E3F222C00000000000015 /* EmptySlotsView.swift */,
-				3A1E3F242C00000000000016 /* AIInsightsView.swift */,
-				3A1E3F262C00000000000017 /* UpcomingAppointmentsView.swift */,
-				3A1E3F282C00000000000018 /* MobileNavView.swift */,
+				4A1E3F302C00000000000022 /* AIService.swift */,
+				4A1E3F322C00000000000023 /* DataManager.swift */,
 			);
-			path = Components;
+			path = Services;
 			sourceTree = "<group>";
 		};
-		3A1E3F322C00000000000029 /* Utilities */ = {
+		4A1E3F3A2C00000000000033 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				3A1E3F2A2C00000000000019 /* ColorExtensions.swift */,
-				3A1E3F2C2C00000000000020 /* ViewExtensions.swift */,
+				4A1E3F342C00000000000024 /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -158,13 +170,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A1E3EFC2C00000000000031 /* SalonSparkAI */ = {
+		4A1E3EFC2C00000000000035 /* SalonSparkAI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A1E3F0B2C00000000000032 /* Build configuration list for PBXNativeTarget "SalonSparkAI" */;
+			buildConfigurationList = 4A1E3F0B2C00000000000036 /* Build configuration list for PBXNativeTarget "SalonSparkAI" */;
 			buildPhases = (
-				3A1E3EF92C00000000000033 /* Sources */,
-				3A1E3EFA2C00000000000021 /* Frameworks */,
-				3A1E3EFB2C00000000000034 /* Resources */,
+				4A1E3EF92C00000000000037 /* Sources */,
+				4A1E3EFA2C00000000000025 /* Frameworks */,
+				4A1E3EFB2C00000000000038 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -172,25 +184,25 @@
 			);
 			name = SalonSparkAI;
 			productName = SalonSparkAI;
-			productReference = 3A1E3EFD2C00000000000000 /* SalonSparkAI.app */;
+			productReference = 4A1E3EFD2C00000000000000 /* SalonSparkAI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		3A1E3EF52C00000000000035 /* Project object */ = {
+		4A1E3EF52C00000000000039 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					3A1E3EFC2C00000000000031 = {
+					4A1E3EFC2C00000000000035 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 3A1E3EF82C00000000000036 /* Build configuration list for PBXProject "SalonSparkAI" */;
+			buildConfigurationList = 4A1E3EF82C00000000000040 /* Build configuration list for PBXProject "SalonSparkAI" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -198,58 +210,62 @@
 				en,
 				Base,
 			);
-			mainGroup = 3A1E3EF42C00000000000022;
-			productRefGroup = 3A1E3EFE2C00000000000024 /* Products */;
+			mainGroup = 4A1E3EF42C00000000000026;
+			productRefGroup = 4A1E3EFE2C00000000000028 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A1E3EFC2C00000000000031 /* SalonSparkAI */,
+				4A1E3EFC2C00000000000035 /* SalonSparkAI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3A1E3EFB2C00000000000034 /* Resources */ = {
+		4A1E3EFB2C00000000000038 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A1E3F082C00000000000004 /* Preview Assets.xcassets in Resources */,
-				3A1E3F052C00000000000003 /* Assets.xcassets in Resources */,
+				4A1E3F082C00000000000004 /* Preview Assets.xcassets in Resources */,
+				4A1E3F052C00000000000003 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3A1E3EF92C00000000000033 /* Sources */ = {
+		4A1E3EF92C00000000000037 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A1E3F032C00000000000002 /* ContentView.swift in Sources */,
-				3A1E3F1D2C00000000000012 /* DashboardViewModel.swift in Sources */,
-				3A1E3F132C00000000000007 /* Appointment.swift in Sources */,
-				3A1E3F012C00000000000001 /* SalonSparkAIApp.swift in Sources */,
-				3A1E3F152C00000000000008 /* EmptySlot.swift in Sources */,
-				3A1E3F172C00000000000009 /* AIInsight.swift in Sources */,
-				3A1E3F192C00000000000010 /* StatsCardView.swift in Sources */,
-				3A1E3F1B2C00000000000011 /* HeaderView.swift in Sources */,
-				3A1E3F0F2C00000000000005 /* OnboardingView.swift in Sources */,
-				3A1E3F112C00000000000006 /* DashboardView.swift in Sources */,
-				3A1E3F1F2C00000000000013 /* QuickAction.swift in Sources */,
-				3A1E3F212C00000000000014 /* QuickActionsView.swift in Sources */,
-				3A1E3F232C00000000000015 /* EmptySlotsView.swift in Sources */,
-				3A1E3F252C00000000000016 /* AIInsightsView.swift in Sources */,
-				3A1E3F272C00000000000017 /* UpcomingAppointmentsView.swift in Sources */,
-				3A1E3F292C00000000000018 /* MobileNavView.swift in Sources */,
-				3A1E3F2B2C00000000000019 /* ColorExtensions.swift in Sources */,
-				3A1E3F2D2C00000000000020 /* ViewExtensions.swift in Sources */,
+				4A1E3F032C00000000000002 /* ContentView.swift in Sources */,
+				4A1E3F012C00000000000001 /* SalonSparkAIApp.swift in Sources */,
+				4A1E3F0F2C00000000000005 /* OnboardingView.swift in Sources */,
+				4A1E3F112C00000000000006 /* DashboardView.swift in Sources */,
+				4A1E3F132C00000000000007 /* CalendarView.swift in Sources */,
+				4A1E3F152C00000000000008 /* AIBoostView.swift in Sources */,
+				4A1E3F172C00000000000009 /* ClientsView.swift in Sources */,
+				4A1E3F192C00000000000010 /* SettingsView.swift in Sources */,
+				4A1E3F1B2C00000000000011 /* BookingFormView.swift in Sources */,
+				4A1E3F1D2C00000000000012 /* AIPostGeneratorView.swift in Sources */,
+				4A1E3F1F2C00000000000013 /* CampaignCreatorView.swift in Sources */,
+				4A1E3F212C00000000000014 /* OfferCreatorView.swift in Sources */,
+				4A1E3F232C00000000000015 /* Appointment.swift in Sources */,
+				4A1E3F252C00000000000016 /* Client.swift in Sources */,
+				4A1E3F272C00000000000017 /* Service.swift in Sources */,
+				4A1E3F292C00000000000018 /* Campaign.swift in Sources */,
+				4A1E3F2B2C00000000000019 /* AppState.swift in Sources */,
+				4A1E3F2D2C00000000000020 /* CalendarViewModel.swift in Sources */,
+				4A1E3F2F2C00000000000021 /* ClientsViewModel.swift in Sources */,
+				4A1E3F312C00000000000022 /* AIService.swift in Sources */,
+				4A1E3F332C00000000000023 /* DataManager.swift in Sources */,
+				4A1E3F352C00000000000024 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		3A1E3F092C00000000000037 /* Debug */ = {
+		4A1E3F092C00000000000041 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -312,7 +328,7 @@
 			};
 			name = Debug;
 		};
-		3A1E3F0A2C00000000000038 /* Release */ = {
+		4A1E3F0A2C00000000000042 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -368,7 +384,7 @@
 			};
 			name = Release;
 		};
-		3A1E3F0C2C00000000000039 /* Debug */ = {
+		4A1E3F0C2C00000000000043 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -396,7 +412,7 @@
 			};
 			name = Debug;
 		};
-		3A1E3F0D2C00000000000040 /* Release */ = {
+		4A1E3F0D2C00000000000044 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -427,25 +443,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A1E3EF82C00000000000036 /* Build configuration list for PBXProject "SalonSparkAI" */ = {
+		4A1E3EF82C00000000000040 /* Build configuration list for PBXProject "SalonSparkAI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3A1E3F092C00000000000037 /* Debug */,
-				3A1E3F0A2C00000000000038 /* Release */,
+				4A1E3F092C00000000000041 /* Debug */,
+				4A1E3F0A2C00000000000042 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A1E3F0B2C00000000000032 /* Build configuration list for PBXNativeTarget "SalonSparkAI" */ = {
+		4A1E3F0B2C00000000000036 /* Build configuration list for PBXNativeTarget "SalonSparkAI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3A1E3F0C2C00000000000039 /* Debug */,
-				3A1E3F0D2C00000000000040 /* Release */,
+				4A1E3F0C2C00000000000043 /* Debug */,
+				4A1E3F0D2C00000000000044 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 3A1E3EF52C00000000000035 /* Project object */;
+	rootObject = 4A1E3EF52C00000000000039 /* Project object */;
 }

@@ -2,213 +2,219 @@
 //  DashboardView.swift
 //  SalonSparkAI
 //
-//  Main dashboard with all components
-//
 
 import SwiftUI
 
 struct DashboardView: View {
-    @StateObject private var viewModel = DashboardViewModel()
+    @EnvironmentObject var appState: AppState
+    @State private var showBookingForm = false
     
     var body: some View {
-        ZStack {
-            // Background
-            LinearGradient.warmBackground
-                .ignoresSafeArea()
-            
-            VStack(spacing: 0) {
-                // Header
-                HeaderView(
-                    salonName: viewModel.salonName,
-                    notificationCount: viewModel.notificationCount,
-                    onSearch: viewModel.handleSearch,
-                    onNotifications: viewModel.handleNotifications
-                )
-                
-                // Main content
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 20) {
-                        // Stats grid
-                        statsGrid
-                            .padding(.horizontal, 16)
-                            .padding(.top, 16)
-                        
-                        // Quick actions
-                        VStack(alignment: .leading, spacing: 12) {
-                            QuickActionsView(
-                                actions: viewModel.quickActions,
-                                onAction: viewModel.handleQuickAction
-                            )
-                        }
-                        .padding(.horizontal, 16)
-                        
-                        // Empty slots
-                        EmptySlotsView(
-                            slots: viewModel.emptySlots,
-                            onPromote: viewModel.promoteSlot,
-                            onPromoteAll: viewModel.promoteAllSlots
-                        )
-                        .padding(.horizontal, 16)
-                        
-                        // AI insights
-                        AIInsightsView(
-                            insights: viewModel.insights,
-                            onAction: viewModel.handleInsightAction,
-                            onViewAll: viewModel.viewAllInsights
-                        )
-                        .padding(.horizontal, 16)
-                        
-                        // Upcoming appointments
-                        UpcomingAppointmentsView(
-                            appointments: viewModel.appointments,
-                            onViewAll: viewModel.viewAllAppointments
-                        )
-                        .padding(.horizontal, 16)
-                        
-                        // Bottom spacing for nav bar
-                        Color.clear.frame(height: 80)
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 20) {
+                    // Stats Grid
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                        StatCard(title: "Today's Bookings", value: "\(appState.todayAppointments.count)", icon: "calendar", color: .blue)
+                        StatCard(title: "Revenue", value: appState.todayRevenue.currencyString, icon: "dollarsign.circle.fill", color: .green)
+                        StatCard(title: "New Clients", value: "\(appState.weekClients)", icon: "person.2.fill", color: .purple)
+                        StatCard(title: "Fill Rate", value: String(format: "%.0f%%", appState.monthlyFillRate * 100), icon: "chart.bar.fill", color: .orange)
                     }
-                }
-                .refreshable {
-                    viewModel.refreshData()
-                }
-            }
-            
-            // Bottom navigation
-            VStack {
-                Spacer()
-                MobileNavView(
-                    activeTab: $viewModel.activeTab,
-                    onTabChange: viewModel.changeTab
-                )
-            }
-            .ignoresSafeArea(edges: .bottom)
-            
-            // Toast notification
-            if viewModel.showToast {
-                VStack {
-                    Spacer()
+                    .padding(.horizontal)
                     
-                    HStack(spacing: 12) {
-                        Image(systemName: viewModel.toastIcon)
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(.white)
-                        
-                        Text(viewModel.toastMessage)
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundColor(.white)
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 14)
-                    .background(
-                        Capsule()
-                            .fill(Color.black.opacity(0.85))
-                    )
-                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 4)
-                    .padding(.bottom, 100)
+                    // Quick Actions
+                    QuickActionsSection(showBookingForm: $showBookingForm)
+                    
+                    // Today's Appointments
+                    TodayAppointmentsSection()
+                    
+                    // AI Insights
+                    AIInsightsSection()
                 }
-                .transition(.move(edge: .bottom).combined(with: .opacity))
-                .animation(.spring(response: 0.4, dampingFraction: 0.8), value: viewModel.showToast)
+                .padding(.vertical)
             }
-        }
-        .sheet(isPresented: $viewModel.showSearchSheet) {
-            searchSheetContent
-        }
-        .sheet(isPresented: $viewModel.showNotificationsSheet) {
-            notificationsSheetContent
-        }
-    }
-    
-    // MARK: - Stats Grid
-    private var statsGrid: some View {
-        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-            StatsCardView(
-                title: "Today's Bookings",
-                value: "\(viewModel.todaysBookings)",
-                subtitle: "\(viewModel.bookingsRemaining) remaining",
-                icon: "calendar",
-                trend: (value: viewModel.bookingTrend, isPositive: viewModel.bookingTrendPositive)
-            )
-            
-            StatsCardView(
-                title: "Revenue",
-                value: viewModel.revenue,
-                subtitle: "Today's total",
-                icon: "dollarsign.circle.fill",
-                variant: .primary
-            )
-            
-            StatsCardView(
-                title: "New Clients",
-                value: "\(viewModel.newClients)",
-                subtitle: "This week",
-                icon: "person.2.fill",
-                trend: (value: viewModel.clientTrend, isPositive: viewModel.clientTrendPositive)
-            )
-            
-            StatsCardView(
-                title: "Fill Rate",
-                value: viewModel.fillRate,
-                subtitle: "This month",
-                icon: "chart.bar.fill"
-            )
-        }
-    }
-    
-    // MARK: - Sheet Content
-    private var searchSheetContent: some View {
-        NavigationView {
-            VStack(spacing: 20) {
-                Image(systemName: "magnifyingglass")
-                    .font(.system(size: 48))
-                    .foregroundColor(.secondary)
-                
-                Text("Search Feature")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                
-                Text("Search functionality coming soon!")
-                    .foregroundColor(.secondary)
-            }
-            .navigationTitle("Search")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        viewModel.showSearchSheet = false
-                    }
-                }
-            }
-        }
-    }
-    
-    private var notificationsSheetContent: some View {
-        NavigationView {
-            VStack(spacing: 20) {
-                Image(systemName: "bell.fill")
-                    .font(.system(size: 48))
-                    .foregroundColor(.blue)
-                
-                Text("\(viewModel.notificationCount) New Notifications")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                
-                Text("Notification center coming soon!")
-                    .foregroundColor(.secondary)
-            }
-            .navigationTitle("Notifications")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        viewModel.showNotificationsSheet = false
-                    }
-                }
+            .navigationTitle("Dashboard")
+            .sheet(isPresented: $showBookingForm) {
+                BookingFormView()
             }
         }
     }
 }
 
-#Preview {
-    DashboardView()
+struct StatCard: View {
+    let title: String
+    let value: String
+    let icon: String
+    let color: Color
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Image(systemName: icon)
+                    .font(.title2)
+                    .foregroundColor(color)
+                Spacer()
+            }
+            Text(value)
+                .font(.title)
+                .fontWeight(.bold)
+            Text(title)
+                .font(.caption)
+                .foregroundColor(.secondary)
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(12)
+    }
+}
+
+struct QuickActionsSection: View {
+    @Binding var showBookingForm: Bool
+    @EnvironmentObject var appState: AppState
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Quick Actions")
+                .font(.headline)
+                .padding(.horizontal)
+            
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                QuickActionButton(icon: "plus.circle.fill", title: "Book", color: .blue) {
+                    showBookingForm = true
+                }
+                QuickActionButton(icon: "megaphone.fill", title: "Campaign", color: .orange) {
+                    appState.selectedTab = "ai"
+                }
+                QuickActionButton(icon: "gift.fill", title: "Offer", color: .green) {
+                    appState.selectedTab = "ai"
+                }
+                QuickActionButton(icon: "photo.fill", title: "Post", color: .pink) {
+                    appState.selectedTab = "ai"
+                }
+            }
+            .padding(.horizontal)
+        }
+    }
+}
+
+struct QuickActionButton: View {
+    let icon: String
+    let title: String
+    let color: Color
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 8) {
+                Image(systemName: icon)
+                    .font(.title2)
+                    .foregroundColor(.white)
+                    .frame(width: 50, height: 50)
+                    .background(color)
+                    .clipShape(Circle())
+                Text(title)
+                    .font(.caption)
+                    .foregroundColor(.primary)
+            }
+        }
+    }
+}
+
+struct TodayAppointmentsSection: View {
+    @EnvironmentObject var appState: AppState
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Today's Appointments")
+                .font(.headline)
+                .padding(.horizontal)
+            
+            if appState.todayAppointments.isEmpty {
+                Text("No appointments scheduled")
+                    .foregroundColor(.secondary)
+                    .padding()
+            } else {
+                ForEach(appState.todayAppointments) { appointment in
+                    AppointmentRow(appointment: appointment)
+                }
+                .padding(.horizontal)
+            }
+        }
+    }
+}
+
+struct AppointmentRow: View {
+    let appointment: Appointment
+    
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(appointment.clientName)
+                    .font(.headline)
+                Text(appointment.serviceName)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
+            Text(appointment.timeString)
+                .font(.subheadline)
+                .foregroundColor(.blue)
+        }
+        .padding()
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(12)
+    }
+}
+
+struct AIInsightsSection: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("AI Insights")
+                .font(.headline)
+                .padding(.horizontal)
+            
+            InsightCard(
+                title: "Empty Slot Alert",
+                description: "You have 3 empty slots today. Create a flash sale?",
+                action: "Promote Slots"
+            )
+            
+            InsightCard(
+                title: "Client Follow-up",
+                description: "5 VIP clients haven't booked in 30 days",
+                action: "Send Offers"
+            )
+        }
+    }
+}
+
+struct InsightCard: View {
+    let title: String
+    let description: String
+    let action: String
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Image(systemName: "sparkles")
+                    .foregroundColor(.purple)
+                Text(title)
+                    .font(.headline)
+            }
+            Text(description)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            Button(action: {}) {
+                Text(action)
+                    .font(.subheadline)
+                    .foregroundColor(.blue)
+            }
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(12)
+        .padding(.horizontal)
+    }
 }
